@@ -19,7 +19,7 @@ RUN apt-get update  \
 RUN /etc/init.d/nordvpn start
 
 # Reload Transmission
-RUN sudo systemctl reload transmission-daemon
+RUN service transmission-daemon reload
 
 # Start infinte loop
 CMD ["sh", "-c", "while sleep 3600; do :; done"]
