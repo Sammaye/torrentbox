@@ -12,17 +12,14 @@ apt-get install -y --no-install-recommends wget apt-transport-https ca-certifica
     rm -rf /var/lib/apt/lists/*
 
 # Install Transmission
-RUN add-apt-repository ppa:transmissionbt/ppa  \
-    && apt-get update  \
-    && apt-get install transmission-cli transmission-common transmission-daemon
+RUN apt-get update  \
+    && apt-get install -y --no-install-recommends transmission-cli transmission-common transmission-daemon
 
 # Start NordVPN
-RUN /etc/init.d/nordvpn start  \
-    && sleep 5  \
-    && /bin/bash -c "--cap-add=NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6=0"
+RUN /etc/init.d/nordvpn start
 
-# Start Transmission
-RUN /etc/init.d/transmission-daemon start
+# Reload Transmission
+RUN sudo systemctl reload transmission-daemon
 
 # Start infinte loop
 CMD ["sh", "-c", "while sleep 3600; do :; done"]

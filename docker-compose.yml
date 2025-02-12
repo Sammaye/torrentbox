@@ -2,9 +2,13 @@ name: 'torrentbox'
 services:
   torrentbox:
     container_name: torrentbox
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+        - net.ipv6.conf.all.disable_ipv6=0
     build:
       context: .
     volumes:
-      - ./docker/var/lib/transmission-daemon:/var/lib/transmission-daemon
+      - ./docker/etc/transmission-daemon:/etc/transmission-daemon
     ports:
       - '9091:9091'
