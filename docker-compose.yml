@@ -1,0 +1,11 @@
+name: 'torrentbox'
+services:
+  torrentbox:
+    container_name: torrentbox
+    build:
+      context: .
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/.git
+    ports:
+      - '3000:3000'
