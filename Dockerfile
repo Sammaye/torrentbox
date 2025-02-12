@@ -10,6 +10,10 @@ apt-get install -y --no-install-recommends wget apt-transport-https ca-certifica
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN add-apt-repository ppa:transmissionbt/ppa  \
+    && apt-get update  \
+    && apt-get install transmission-cli transmission-common transmission-daemon
+
 RUN /etc/init.d/nordvpn start  \
     && sleep 5  \
     && /bin/bash -c "--cap-add=NET_ADMIN --sysctl net.ipv6.conf.all.disable_ipv6=0"

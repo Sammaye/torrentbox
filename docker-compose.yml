@@ -5,7 +5,6 @@ services:
     build:
       context: .
     volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/.git
+      - ./docker/var/lib/transmission-daemon:/var/lib/transmission-daemon
     ports:
-      - '3000:3000'
+      - '9091:9091'
