@@ -1,1 +1,8 @@
-.token
+.nordvpn_token
+.openvpn_credentials
+
+docker/etc/transmission-daemon/complete
+docker/etc/transmission-daemon/incomplete
+
+!docker/etc/transmission-daemon/complete/.empty
+!docker/etc/transmission-daemon/incomplete/.empty

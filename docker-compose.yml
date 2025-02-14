@@ -10,12 +10,19 @@ services:
       context: .
     volumes:
       - ./docker/init.sh:/run/init.sh
+      - ./docker/etc/openvpn/ovpn_udp:/etc/openvpn/ovpn_udp
+      - ./docker/etc/openvpn/ovpn_tcp:/etc/openvpn/ovpn_tcp
       - ./docker/etc/transmission-daemon:/etc/transmission-daemon
     ports:
       - '9091:9091'
     secrets:
       - nordvpn_token
+      - openvpn_credentials
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
 
 secrets:
   nordvpn_token:
       file: ./.nordvpn_token
+  openvpn_credentials:
+      file: ./.openvpn_credentials
