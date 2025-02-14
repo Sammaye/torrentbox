@@ -9,6 +9,13 @@ services:
     build:
       context: .
     volumes:
+      - ./docker/init.sh:/run/init.sh
       - ./docker/etc/transmission-daemon:/etc/transmission-daemon
     ports:
       - '9091:9091'
+    secrets:
+      - nordvpn_token
+
+secrets:
+  nordvpn_token:
+      file: ./.nordvpn_token

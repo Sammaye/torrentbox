@@ -16,4 +16,4 @@ RUN apt-get update  \
     && apt-get install -y --no-install-recommends transmission-cli transmission-common transmission-daemon
 
 # Start infinte loop
-CMD /etc/init.d/nordvpn start ; service transmission-daemon start ; sh -c "while sleep 3600; do :; done"
+CMD bash /run/init.sh ; sh -c "while sleep 3600; do :; done"
