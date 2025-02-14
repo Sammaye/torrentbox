@@ -10,6 +10,7 @@ services:
       context: .
     volumes:
       - ./docker/init.sh:/run/init.sh
+      - ./docker/root/checkip.sh:/root/checkip.sh
       - ./docker/etc/openvpn/ovpn_udp:/etc/openvpn/ovpn_udp
       - ./docker/etc/openvpn/ovpn_tcp:/etc/openvpn/ovpn_tcp
       - ./docker/etc/transmission-daemon:/etc/transmission-daemon
