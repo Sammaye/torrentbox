@@ -15,11 +15,5 @@ apt-get install -y --no-install-recommends wget apt-transport-https ca-certifica
 RUN apt-get update  \
     && apt-get install -y --no-install-recommends transmission-cli transmission-common transmission-daemon
 
-# Start NordVPN
-RUN /etc/init.d/nordvpn start
-
-# Reload Transmission
-RUN service transmission-daemon start
-
 # Start infinte loop
-CMD ["sh", "-c", "while sleep 3600; do :; done"]
+CMD /etc/init.d/nordvpn start && service transmission-daemon start && sh -c "while sleep 3600; do :; done"
